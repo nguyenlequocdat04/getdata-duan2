@@ -1,0 +1,18 @@
+# docker-compose up -d
+# docker exec -it get-data bash
+# pip install google_images_download
+# googleimagesdownload --keywords "phở" --limit 1000 -cd ./chromedriver
+# rename --> label imgs --> remove unused img --> (rewrite img) check width --> (remove unused) --> check --> train
+
+version: '3'
+services:
+  get-data:
+    container_name: get-data
+    build:
+      context: ./
+    volumes:
+      - ./:/mnt/code/
+    ports:
+      - 4444:4444
+    command: tail -f /dev/null # keep container on
+    working_dir: /mnt/code
